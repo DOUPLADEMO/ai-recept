@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Recipe Finder</title>
+  <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+  <header>
+    <h1>AI Recipe Finder</h1>
+    <p>Enter your ingredients and get cooking!</p>
+  </header>
+  
+  <section id="input-section">
+    <h2>Enter Ingredients:</h2>
+    <input type="text" id="ingredient-input" placeholder="Type an ingredient...">
+    <button id="add-ingredient-btn">Add Ingredient</button>
+    <div id="ingredient-list"></div>
+    <button id="search-btn">Find Recipes</button>
+  </section>
+  
+  <section id="results-section">
+    <h2>Recipe Suggestions:</h2>
+    <div id="recipe-results"></div>
+  </section>
+
+  <script src="/static/js/app.js"></script>
+</body>
+</html>
