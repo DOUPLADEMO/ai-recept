@@ -45,33 +45,30 @@
   
   results.innerHTML = 'Keresés...';
 
-  // Fetch recipes from Firebase
-  const dbRef = ref(database);
-  get(child(dbRef, "recipes")).then((snapshot) => {
-    if (snapshot.exists()) {
-      const data = snapshot.val();
-      const matchingRecipes = Object.values(data).filter(recipe => 
-        recipe.Ingredients.toLowerCase().includes(ingredient) ||
-        recipe.Tags.toLowerCase().includes(ingredient)
-      );
-
-      if (matchingRecipes.length) {
-        results.innerHTML = matchingRecipes.map(recipe => `
-          <h3>${recipe.Title}</h3>
-          <p><strong>Hozzávalók:</strong> ${recipe.Ingredients}</p>
-          <p><strong>Elkészítés:</strong> ${recipe.Instructions}</p>
-        `).join('');
-      } else {
-        results.innerHTML = 'Nincs találat.';
-      }
-    } else {
-      results.innerHTML = 'Adatbázis üres.';
+  // Static test data for debugging
+  const data = [
+    {
+      "Title": "Spárga leves medvehagymás túrós raviolival",
+      "Ingredients": "fehér spárga, zöldség alaplé, vaj, olívaolaj, fehérbors, tejszín, liszt, medvehagyma, tojás, túró, szalonna kocka, tejföl",
+      "Instructions": "Spárga megpucolása és főzése, medvehagyma ravioli készítése, tálalás kipirított szalonnával"
     }
-  }).catch((error) => {
-    console.error(error);
-    results.innerHTML = 'Hiba történt az adatok lekérdezésekor.';
-  });
+  ];
+
+  const matchingRecipes = data.filter(recipe => 
+    recipe.Ingredients.toLowerCase().includes(ingredient)
+  );
+
+  if (matchingRecipes.length) {
+    results.innerHTML = matchingRecipes.map(recipe => `
+      <h3>${recipe.Title}</h3>
+      <p><strong>Hozzávalók:</strong> ${recipe.Ingredients}</p>
+      <p><strong>Elkészítés:</strong> ${recipe.Instructions}</p>
+    `).join('');
+  } else {
+    results.innerHTML = 'Nincs találat.';
+  }
 });
+
 
 
   </script>
