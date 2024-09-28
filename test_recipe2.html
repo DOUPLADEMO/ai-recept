@@ -15,12 +15,10 @@
 
   <!-- Firebase SDK -->
   <script type="module">
-    // Import the functions you need from the SDKs you need
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
-    import { getDatabase, ref, get, child } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+import { getDatabase, ref, get, child } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
 
-    // Your web app's Firebase configuration
-    const firebaseConfig = {
+const firebaseConfig = {
   apiKey: "AIzaSyAPmEUUCR1tjvsxqmOI7dVVarPwMSWGFps",
   authDomain: "recipe-finder-c64fe.firebaseapp.com",
   databaseURL: "https://recipe-finder-c64fe-default-rtdb.firebaseio.com",
@@ -29,11 +27,29 @@
   messagingSenderId: "766585031749",
   appId: "1:766585031749:web:23b23d73e989917cf5672c",
   measurementId: "G-QFV15TD4MZ"
-    };
+};
 
-    // Initialize Firebase
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
+
+// Test function to fetch data
+function testDatabase() {
+  const dbRef = ref(database);
+  get(child(dbRef, 'recipes')).then((snapshot) => {
+    if (snapshot.exists()) {
+      console.log(snapshot.val()); // Log the recipe data to the console
+    } else {
+      console.log("No data available");
+    }
+  }).catch((error) => {
+    console.error(error);
+  });
+}
+
+// Call the test function
+testDatabase();
+
 
 document.getElementById('ingredient-form').addEventListener('submit', async (e) => {
   e.preventDefault();
