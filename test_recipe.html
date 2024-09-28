@@ -38,7 +38,7 @@
     const database = getDatabase(app);
 
     // Recipe search functionality
-   document.getElementById('ingredient-form').addEventListener('submit', async (e) => {
+  document.getElementById('ingredient-form').addEventListener('submit', async (e) => {
   e.preventDefault();
   const ingredient = document.getElementById('ingredient').value.toLowerCase();
   const results = document.getElementById('results');
@@ -72,6 +72,7 @@
     results.innerHTML = 'Hiba történt az adatok lekérdezésekor.';
   });
 });
+
 
   </script>
 </body>
